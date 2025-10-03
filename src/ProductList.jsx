@@ -1,3 +1,5 @@
+import { useDispatch } from 'react-redux';
+import { addItem } from '../assets/CartSlice';
 import React, { useState, useEffect } from 'react';
 import './ProductList.css'
 import CartItem from './CartItem';
@@ -274,6 +276,24 @@ function ProductList({ onHomeClick }) {
             </div>
             {!showCart ? (
                 <div className="product-grid">
+  {plantsArray.map((categoryObj, idx) => (
+    <div key={idx}>
+      <h2>{categoryObj.category}</h2>
+      <div className="plant-category">
+        {categoryObj.plants.map((plant, index) => (
+          <div key={index} className="plant-card">
+            <img src={plant.image} alt={plant.name} width="200" height="200" />
+            <h3>{plant.name}</h3>
+            <p>{plant.description}</p>
+            <p><strong>Price: </strong>{plant.cost}</p>
+            <button>Add to Cart</button>
+          </div>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
+
 
 
                 </div>
